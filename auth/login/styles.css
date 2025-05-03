@@ -1,0 +1,141 @@
+body {
+    background-color: #F9FAFB;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 1.5rem;
+}
+
+.btn-connect {
+    background-color: #3B82F6;
+    color: white;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn-connect:hover {
+    background-color: #2563EB;
+}
+
+.form-control {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border-left: none;
+}
+
+.form-control:focus {
+    border-left: none;
+    box-shadow: none;
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: #86b7fe;
+}
+
+.input-group:focus-within .form-control {
+    border-color: #86b7fe;
+}
+
+.support-link {
+    color: #6B7280;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.support-link:hover {
+    color: #374151;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #6B7280;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .login-container {
+        padding: 3rem;
+    }
+}
+
+.input-group-text {
+    border-right: none;
+    border-color: #dee2e6;
+}
+
+/* Styles des notifications */
+.toast {
+    min-width: 300px;
+    z-index: 1060;
+}
+
+.toast-body {
+    font-size: 0.9rem;
+    white-space: pre-line;
+}
+
+#notifications-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-outline-primary {
+    color: #3B82F6;
+    border-color: #3B82F6;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3B82F6;
+    color: white;
+}
+
+.btn-outline-secondary {
+    color: #6B7280;
+    border-color: #6B7280;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6B7280;
+    color: white;
+}
+
+hr {
+    color: #E5E7EB;
+    opacity: 0.3;
+}
+
+.text-muted {
+    color: #6B7280 !important;
+}

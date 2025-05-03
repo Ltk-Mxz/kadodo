@@ -1,0 +1,85 @@
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 2rem 1rem;
+}
+
+.register-box {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.register-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.register-header p {
+    color: #666;
+    margin-bottom: 0;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.register-tabs .nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.register-tabs .nav-link {
+    border: none;
+    color: #666;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.register-tabs .nav-link.active {
+    color: #0d6efd;
+    background: none;
+    border: none;
+}
+
+.register-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #0d6efd;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #444;
+}
+
+@media (max-width: 768px) {
+    .register-box {
+        padding: 1.5rem;
+    }
+    
+    .register-tabs .nav-link {
+        padding: 0.75rem 1rem;
+    }
+}

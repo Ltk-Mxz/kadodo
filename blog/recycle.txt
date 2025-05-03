@@ -1,0 +1,281 @@
+//partie d'etat sur le formulaire d'ajout d'actualité
+
+<div class="mb-3">
+        <label class="form-label">État</label>
+        <select name="etat" class="form-select">
+            <option value="en attente">En attente</option>
+            <option value="publié">Publié</option>
+        </select>
+</div>
+
+// Petite documentation sur le traitement php des fichiers chargés sur un site 
+1.Vérifier tout d'abord si le visiteur a bien envoyé un fichier, en testant la variable $_FILES['screenshot'] avec isset() et s'il n'y a pas eu d'erreur d'envoi, grâce à $_FILES['screenshot']['error'] .
+
+2.Vérifier si la taille du fichier ne dépasse pas 1 Mo par exemple (environ 1 000 000 d'octets), grâce à $_FILES['screenshot']['size']  .
+
+3.Vérifier si l'extension du fichier est autorisée (il faut interdire à tout prix que les gens puissent envoyer des fichiers PHP, sinon ils pourraient exécuter des scripts sur votre serveur). Dans notre cas, nous autoriserons seulement les images (fichiers .png, .jpg, .jpeg et .gif).
+Nous analyserons pour cela la variable $_FILES['screenshot']['name'] .
+4. Vérifiez si le dossier pour stocker les images existe
+Je propose de placer le fichier dans un sous-dossier « uploads ». Pour vérifier si notre dossier uploads existe, nous allons utiliser la fonction  is_dir()  . Il nous suffit de lui fournir le chemin du dossier que nous souhaitons tester. La fonction renvoie true si le dossier existe et false dans le cas contraire.
+
+Je veux maintenant que une fois le fichier ajouter ça prenne un nouveau nom aléatoire et unique, pour celà:
+    On extrait l'extension du fichier avec pathinfo comme suit :
+        $fileExtension = pathinfo($_FILE['fileName]['name]);
+    On va utiliser une fonction uniqid pour générer un nom aléatoire
+
+
+
+
+
+
+
+
+
+
+ //--------------------------------------------------------------POUR LE FILTRAGE ULTRA COOL------------------------------------
+
+$where = [];
+$params = [];
+$get_mod = [];
+
+
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     // Filtre par état
+//     if (!empty($_POST['etat'])) {
+//         $where[] = "etat_annonce = ?";
+//         $params[] = $_POST['etat'];
+//     }
+
+    // Filtre par date
+    if (!empty($_POST['date'])) {
+        switch ($_POST['date']) {
+            case 'today':
+                $where[] = "DATE(date_creaton) = CURDATE()";
+                break;
+            case 'week':
+                $where[] = "YEARWEEK(date_creaton) = YEARWEEK(NOW())";
+                break;
+            case 'month':
+                $where[] = "MONTH(date_creaton) = MONTH(NOW()) AND YEAR(ddate_creaton) = YEAR(NOW())";
+                break;
+            case 'year':
+                $where[] = "YEAR(date_creaton) = YEAR(NOW())";
+                break;
+        }
+    }
+
+    // Filtre par recherche texte
+    if (!empty($_POST['search'])) {
+        $where[] = "(titre LIKE ? OR contenu LIKE ?)";
+        $searchTerm = '%' . $_POST['search'] . '%';
+        $params[] = $searchTerm;
+        $params[] = $searchTerm;
+    }
+
+    // Construction requête
+    $sql = "SELECT * FROM publication_blog";
+    if (!empty($where)) {
+        $sql .= " WHERE " . implode(" AND ", $where);
+    }
+    $sql .= " ORDER BY date_creation DESC";
+
+    try {
+        $requete = $dbase_connected->prepare($sql);
+        $requete->execute($params);
+        $annonces = $requete->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Erreur de filtrage : " . $e->getMessage());
+        $error_message = "Erreur lors de l'application des filtres";
+    }
+?>
+
+
+
+
+
+/////////////////////////////ici//////////////////////////////////////////
+<?php 
+require_once ("../components/header/header.php");
+require_once ("../config/database.php");
+?>
+
+<?php
+//------------------------------------------------POUR LE FILTRAGE------------------------------------//
+$annonces= [];
+$where = [];
+$params = [];
+
+if (!empty($_GET['date'])) {
+    $valid_dates = ['today', 'week', 'month', 'year'];
+    if (in_array($_GET['date'], $valid_dates)) {
+        switch ($_GET['date']) {
+            case 'today':
+                $where[] = "DATE(publication_blog.date_creation) = CURDATE()";
+                break;
+            case 'week':
+                $where[] = "YEARWEEK(publication_blog.date_creation) = YEARWEEK(NOW())";
+                break;
+            case 'month':
+                $where[] = "MONTH(publication_blog.date_creation) = MONTH(NOW()) AND YEAR(publication_blog.date_creation) = YEAR(NOW())";
+                break;
+            case 'year':
+                $where[] = "YEAR(publication_blog.date_creation) = YEAR(NOW())";
+                break;
+        }
+    }
+}
+
+//Avec des paramètres nommés
+if (!empty($_GET['search'])) {
+    $where[] = "(titre LIKE :search OR contenu LIKE :search)";
+    $searchTerm = '%' . trim($_GET['search']) . '%';
+    $params[':search'] = $searchTerm;
+}
+
+// Requête SQL avec paramètres nommés
+$sql = "SELECT publication_blog.*, utilisateur.* FROM publication_blog 
+        JOIN moderateur ON publication_blog.id_moderateur = moderateur.id_moderateur 
+        JOIN utilisateur ON moderateur.id_utilisateur = utilisateur.id_utilisateur";
+
+if (!empty($where)) {
+    $sql .= " WHERE " . implode(" AND ", $where);
+}
+$sql .= " ORDER BY publication_blog.date_creation DESC LIMIT :limit OFFSET :offset";
+
+// Exécution
+$stmt = $dbase_connected->prepare($sql);
+
+// Liez tous les paramètres (filtres + pagination)
+foreach ($params as $key => $value) {
+    $stmt->bindValue($key, $value);
+}
+$stmt->bindValue(':limit', $annonces_par_page, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+
+$query_params = $_GET;
+unset($query_params['page']);
+$query_string = http_build_query($query_params);
+?>
+
+<br><br><br><br><br>
+
+<div class="container-fluid">
+    <div class="row">
+        <?php require_once '../components/sidebar/sidebar.php'; ?>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="container">
+                <div class="sectiones">
+                    <a href="addblog.php" class="btn btn-primary d-flex justify-content-center align-items-center">
+                        <i class="bi bi-plus me-2"></i> Nouvel Article
+                    </a>
+
+                    <!-- FORMULAIRE DE FILTRE -->
+                    <div class="container-fluid mb-4">
+                        <form method="GET" action="" class="row g-3 align-items-end">
+                            <div class="col-md-3">
+                                <label for="date" class="form-label">Période</label>
+                                <select name="date" id="date" class="form-select">
+                                    <option value="">Toutes dates</option>
+                                    <option value="today" <?= ($_GET['date'] ?? '') === 'today' ? 'selected' : '' ?>>Aujourd'hui</option>
+                                    <option value="week" <?= ($_GET['date'] ?? '') === 'week' ? 'selected' : '' ?>>Cette semaine</option>
+                                    <option value="month" <?= ($_GET['date'] ?? '') === 'month' ? 'selected' : '' ?>>Ce mois</option>
+                                    <option value="year" <?= ($_GET['date'] ?? '') === 'year' ? 'selected' : '' ?>>Cette année</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="search" class="form-label">Recherche</label>
+                                <div class="input-group">
+                                    <input type="text" name="search" id="search" class="form-control" 
+                                        value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
+                                        placeholder="Rechercher...">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-search"></i> Filtrer
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 d-grid">
+                                <a href="?" class="btn btn-outline-secondary">Réinitialiser</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Table Section -->
+                    <div class="section mt-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">Gestion des Articles du BLOG</h2>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Titre</th>
+                                        <th>Auteur</th> 
+                                        <th>Contenu</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($annonces as $info): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($info['titre']) ?></td>
+                                        <td><?= htmlspecialchars($info['prenom'] ?? '') . ' ' . htmlspecialchars($info['nom'] ?? '') ?></td>
+                                        <td><?= htmlspecialchars(substr($info['contenu'], 0, 50)) ?>...</td>
+                                        <td><?= date('d/m/Y', strtotime($info['date_creation'])) ?></td>
+                                        <td class="action-icons">
+                                            <form action="../annoncements/updatenews.php" method="GET" style="display: inline;">
+                                                <input type="hidden" name="id" value="<?= $info['id_publication_blog'] ?>">
+                                                <button type="submit" class="btn btn-link p-0">
+                                                    <i class="bi bi-pencil-square text-primary"></i>
+                                                </button>
+                                            </form>
+                                            <form method="POST" action="delblog_action.php" style="display: inline;">
+                                                <input type="hidden" name="id_publication_blog" value="<?= $info['id_publication_blog'] ?>">
+                                                <button type="submit" class="btn btn-link p-0" onclick="return confirm('Voulez-vous supprimer cet article ?')">
+                                                    <i class="bi bi-trash text-danger"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                            <!-- PAGINATION -->
+                            <?php if ($total_pages > 1): ?>
+                            <nav aria-label="Pagination">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                                        <a class="page-link" href="?<?= $query_string ?>&page=<?= $page - 1 ?>" aria-label="Précédent">
+                                            &laquo;
+                                        </a>
+                                    </li>
+                                    
+                                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                        <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                            <a class="page-link" href="?<?= $query_string ?>&page=<?= $i ?>">
+                                                <?= $i ?>
+                                            </a>
+                                        </li>
+                                    <?php endfor; ?>
+                                    
+                                    <li class="page-item <?= $page >= $total_pages ? 'disabled' : '' ?>">
+                                        <a class="page-link" href="?<?= $query_string ?>&page=<?= $page + 1 ?>" aria-label="Suivant">
+                                            &raquo;
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<?php require_once '../components/footer/footer.php'; ?>

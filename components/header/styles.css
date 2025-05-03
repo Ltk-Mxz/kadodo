@@ -1,0 +1,424 @@
+@import '../root.css';
+
+/* Header fixe */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: white;
+    border-bottom: 1px solid #E5E7EB;
+    z-index: 1030;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.header-logo {
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+}
+
+/* Menu Hamburger */
+.menu-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #111827;
+}
+
+.menu-btn:hover {
+    color: #3B82F6;
+}
+
+.menu-btn svg {
+    width: 24px;
+    height: 24px;
+    color: #111827;
+}
+
+.notification-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: #6B7280;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-btn:hover {
+    color: #111827;
+}
+
+.notification-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.notification-btn .badge,
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    transform: translate(25%, -25%);
+    font-size: 0.75rem;
+    padding: 0.25em 0.6em;
+    min-width: 18px;
+    height: 18px;
+    background-color: #EF4444;
+    color: white;
+    border-radius: 9999px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex !important; /* Forcer l'affichage */
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    z-index: 1;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #E5E7EB;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #111827;
+}
+
+@media (max-width: 767px) {
+    .menu-btn {
+        display: block !important;  /* Force l'affichage sur mobile */
+        margin-left: 0;
+        flex-shrink: 0;
+        z-index: 1031;  /* Au-dessus des autres éléments */
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+        padding: 0.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .header {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+    }
+
+    .header > div {
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .header-logo {
+        height: 32px;
+    }
+
+    .notification-btn {
+        padding: 0.25rem;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .mobile-header {
+        width: 100vw;
+        padding: 0.5rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: white;
+        border-bottom: 1px solid #E5E7EB;
+        z-index: 1030;
+    }
+}
+
+/* Ajout des styles pour mobile header */
+.mobile-header {
+    padding: 0.5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+/* Mobile Header */
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: white;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 0 1rem;
+    z-index: 1030;
+}
+
+.mobile-header .mobile-menu-btn,
+.mobile-header .notification-btn {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #6B7280;
+}
+
+@media (max-width: 767px) {
+    .header {
+        display: none;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .mobile-header .header-logo {
+        height: 32px;
+        width: auto;
+    }
+
+    .mobile-header .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .mobile-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+/* Enlever les marges qui causaient le débordement */
+.header > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0 !important;
+        /* Supprime la marge pour les petits écrans */
+        width: 100% !important;
+        /* Assure que le contenu occupe toute la largeur */
+    }
+
+    .sidebar {
+        display: none;
+        /* Cache la barre latérale sur les petits écrans */
+    }
+
+    .offcanvas {
+        width: 250px;
+        /* Définit une largeur fixe pour le menu mobile */
+    }
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.5rem;
+}
+
+.dropdown-item {
+    color: #6B7280;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #F3F4F6;
+    color: #111827;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+.dropdown-divider {
+    margin: 0.5rem 0;
+    border-color: #E5E7EB;
+}
+
+/* Avatar styles in dropdown */
+.dropdown .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #E5E7EB;
+}
+
+.dropdown-menu .rounded-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #E5E7EB;
+}
+
+/* User info in dropdown */
+.dropdown-menu h6 {
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.dropdown-menu small {
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+.dropdown-menu small.d-block + small.d-block {
+    margin-top: 0.125rem;
+}
+
+/* Dropdown trigger hover effect */
+.dropdown [data-bs-toggle="dropdown"]:hover {
+    opacity: 0.8;
+}
+
+/* Mobile dropdown adjustments */
+.mobile-actions .dropdown-menu {
+    position: fixed;
+    top: calc(var(--header-height) + 0.5rem) !important;
+    right: 1rem !important;
+    left: auto !important;
+    transform: none !important;
+    max-width: calc(100vw - 2rem);
+}
+
+.mobile-actions .dropdown-menu .rounded-circle {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 380px) {
+    .mobile-actions .dropdown-menu {
+        right: 0.5rem !important;
+        left: 0.5rem !important;
+        max-width: calc(100vw - 1rem);
+    }
+    
+    .mobile-actions .dropdown-menu .d-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .mobile-actions .dropdown-menu .ms-3 {
+        margin-left: 0 !important;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Styles pour mobile */
+@media (max-width: 767.98px) {
+    .mobile-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1030;
+        background: #fff;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #E5E7EB;
+    }
+
+    .mobile-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .mobile-actions .dropdown {
+        position: relative !important;
+    }
+
+    .mobile-actions .dropdown-menu {
+        position: absolute !important;
+        top: 100% !important;
+        right: 0 !important;
+        left: auto !important;
+        width: 280px !important;
+        margin-top: 0.5rem;
+        transform: none !important;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-actions .notifications-dropdown {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    /* Ajustement des positions pour le badge de notification */
+    .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #dc3545;
+        color: white;
+        border-radius: 50%;
+        min-width: 18px;
+        height: 18px;
+        font-size: 11px;
+        display: flex !important; /* Forcer l'affichage */
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        z-index: 1;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+}
