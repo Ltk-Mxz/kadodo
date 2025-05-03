@@ -1,0 +1,107 @@
+.grade-table {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.grade-row {
+    transition: background-color 0.2s;
+}
+
+.grade-row:hover {
+    background-color: #f8f9fa;
+}
+
+.grade-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.grade-badge.passing {
+    background-color: #E7F5E8;
+    color: #2F9D44;
+}
+
+.grade-badge.failing {
+    background-color: #FEEEEE;
+    color: #DC3545;
+}
+
+.semester-card {
+    background: #F8F9FA;
+    border: 1px solid #E9ECEF;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.semester-header {
+    background: #E9ECEF;
+    color: #495057;
+    padding: 1rem 1.5rem;
+    border-radius: 12px 12px 0 0;
+    font-weight: 600;
+}
+
+.course-name {
+    color: #495057;
+    font-weight: 500;
+}
+
+.grade-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Grade colors based on value */
+.grade-90-100 { color: #198754; }
+.grade-80-89 { color: #20c997; }
+.grade-70-79 { color: #0dcaf0; }
+.grade-60-69 { color: #ffc107; }
+.grade-below-60 { color: #dc3545; }
+
+/* Styles communs pour les tableaux de notes */
+.grades-container {
+    padding: 1.5rem;
+}
+
+.table-grades {
+    background: #fff;
+    margin-bottom: 0;
+}
+
+.table-grades th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    border-bottom-width: 1px;
+}
+
+.table-grades td {
+    vertical-align: middle;
+}
+
+/* Styles pour les cartes semestre */
+.semester-title {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Badges de statut */
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.status-badge.validated {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.not-validated {
+    background-color: #ffebee;
+    color: #c62828;
+}

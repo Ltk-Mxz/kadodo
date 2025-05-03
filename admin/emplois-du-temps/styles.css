@@ -1,0 +1,35 @@
+:root {
+    --header-height: 60px;
+    --sidebar-width: 250px;
+}
+
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    width: calc(100% - var(--sidebar-width));
+    position: relative;
+    overflow-x: hidden;
+}
+
+.content-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}

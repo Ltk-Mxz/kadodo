@@ -1,0 +1,416 @@
+@import "../../components/footer/styles.css";
+@import "../../components/header/styles.css";
+@import "../../components/sidebar/styles.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f2f2f2;
+}
+
+.container{
+    padding: 30px;
+}
+.container .row {
+    gap: 20px;
+}
+.container .row .col{
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.container .row .col button{
+    width: 100%;
+}
+
+.section{
+    background-color: white;
+    margin-top: 20px;
+}
+
+.section1{
+    margin: 20px 0;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.section .text-start{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#texte{
+    font-weight: 750;
+    font-size: 25px;
+}
+.container .col .p-3{
+    position: relative;
+} 
+
+#textes{
+    font-size: 5px;
+}
+.fa-graduation-cap,.fa-chart-line,.fa-clock ,#textes  {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.section1 .table{
+    width: 100%;
+}
+.section1 .table thead tr{
+    
+}
+
+select button{
+    margin-top: 30px;
+}
+
+.only .container .row{
+    gap: 0; 
+}
+
+.only .container .row .col{
+    border-radius: 0;
+}
+
+#filiere{
+    font-weight: 700;
+}
+
+#texy{
+    font-weight: 700;
+}
+
+.cours .box {
+    display: grid;
+    grid-template-columns: 5% 95%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.cours .box .textes,.container .row .col .textes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cours .box .textes .icones i{
+    font-size: 19px;
+    cursor: pointer;
+
+}
+.cours .box .logo i{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.container .sectiones p{
+    margin: 0 20px;
+}
+
+/* Ajustement du main content */
+.financial-main {
+    padding-top: calc(var(--header-height) + 1rem);
+    padding-bottom: 2rem;
+}
+
+.financial-content {
+    padding: 0 1.5rem;
+}
+
+.financial-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 1rem;
+}
+
+.financial-header .h2 {
+    color: #2c3e50;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Remplacer le bloc des icônes */
+.financial-icon-money,
+.financial-icon-pending,
+.financial-icon-alert {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.financial-icon-money {
+    color: var(--bs-success);
+}
+
+.financial-icon-pending {
+    color: var(--bs-warning);
+}
+
+.financial-icon-alert {
+    color: var(--bs-danger);
+}
+
+/* Supprimer les styles Font Awesome qui ne sont plus nécessaires */
+.fa-graduation-cap,
+.fa-chart-line,
+.fa-clock,
+#textes {
+    display: none;
+}
+
+/* Styles pour le select d'étudiants */
+#studentSelect {
+    cursor: pointer;
+    margin-top: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#studentSelect option {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+#studentSelect option:hover {
+    background-color: #f8f9fa;
+}
+
+/* Style pour les notifications */
+.toast {
+    min-width: 300px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.toast-body {
+    padding: 1rem;
+    font-size: 0.875rem;
+}
+
+/* Animation pour les notifications */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast.show {
+    animation: slideIn 0.3s ease-out;
+}
+
+.financial-content {
+    padding: 2rem;
+}
+
+.financial-header {
+    margin-bottom: 2rem;
+}
+
+.financial-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+}
+
+.section p {
+    margin: 0;
+}
+
+.only {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.table th {
+    background-color: #F9FAFB;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Styles pour les cartes de statistiques */
+.stats-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stats-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.stats-icon {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    opacity: 0.1;
+}
+
+.financial-main {
+    background-color: #F9FAFB;
+}
+
+/* Ajout des box-shadows pour les cards */
+.only, 
+.p-3,
+.section1 {
+    background: white;
+    border-radius: 10px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    transition: all 0.3s ease;
+}
+
+.only:hover, 
+.p-3:hover,
+.section1:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(17, 12, 46, 0.25) 0px 48px 100px 0px;
+}
+
+/* Style pour les tableaux et cards */
+.table-container,
+.only,
+.section1,
+.p-3 {
+    background: white;
+    border-radius: 10px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.table-container:hover,
+.only:hover,
+.section1:hover,
+.p-3:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(17, 12, 46, 0.25) 0px 48px 100px 0px;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+    .financial-main {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+.financial-main {
+    margin-left: var(--sidebar-width);
+    padding-top: calc(var(--header-height) + var(--content-padding));
+    min-height: calc(100vh - var(--header-height));
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .container .row {
+        gap: 15px;
+    }
+
+    .only .container .row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .financial-main {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .container {
+        max-width: 720px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+
+    .container .row .col {
+        padding: 20px;
+    }
+
+    section h3 {
+        font-size: 20px;
+    }
+}

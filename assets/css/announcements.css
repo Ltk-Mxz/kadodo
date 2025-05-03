@@ -1,0 +1,29 @@
+.announcement-item {
+    padding: 15px;
+    border-left: 4px solid;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.announcement-item:hover {
+    transform: translateX(5px);
+}
+
+.announcement-item h6 {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Couleurs personnalisées */
+.bg-purple-subtle {
+    background-color: rgba(111, 66, 193, 0.1);
+}
+
+.border-purple {
+    border-color: #6f42c1;
+}
+
+.text-purple {
+    color: #6f42c1;
+}
