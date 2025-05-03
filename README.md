@@ -12,6 +12,7 @@ Un réseau social scolaire (intranet) complet permettant aux étudiants, profess
 - [Utilisation](#utilisation)
 - [API](#api)
 - [Sécurité](#sécurité)
+- [Output](#Output)
 
 ## 🚀 Fonctionnalités
 
@@ -150,3 +151,20 @@ MIT License
 
 Pour toute question ou suggestion, n'hésitez pas à nous contacter :
 - Email : a96.paul96@gmail.com
+
+## Output
+![1](mockup/1.png)
+![2](mockup/2.png)
+![3](mockup/3.png)
+![4](mockup/4.png)
+![5](mockup/5.png)
+![6](mockup/6.png)
+![7](mockup/7.png)
+![8](mockup/8.png)
+![9](mockup/9.png)
+![10](mockup/10.png)
+![11](mockup/11.png)
+![12](mockup/12.png)
+![13](mockup/13.png)
+![14](mockup/14.png)
+![15](mockup/15.png)
