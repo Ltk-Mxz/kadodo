@@ -1,0 +1,543 @@
+@import "../../components/footer/styles.css";
+@import "../../components/header/styles.css";
+@import "../../components/sidebar/styles.css";
+
+/* Layout containment fixes */
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: var(--header-height); /* Ajout du padding-top */
+}
+
+.main-content {
+    flex: 1;
+    min-height: calc(100vh - var(--header-height));
+    padding: 2rem;
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    position: relative;
+    overflow-y: auto;
+    max-width: calc(100vw - var(--sidebar-width));
+    overflow-x: hidden;
+}
+
+.content-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.calendar-container {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+/* Main Layout */
+.main-content {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    padding: 2rem;
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Calendar Controls */
+.date-navigation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 38px; /* Même hauteur que les boutons */
+}
+
+.date-navigation .btn {
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    color: #6B7280;
+    border-radius: 0.375rem;
+}
+
+.date-navigation .btn:hover {
+    background-color: #F3F4F6;
+    color: #111827;
+}
+
+.date-navigation .bi {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.date-period {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #111827;
+    padding: 0 0.5rem;
+}
+
+/* Search and Filters */
+.search-container {
+    position: relative;
+    min-width: 250px;
+    flex: 1;
+}
+
+.search-container .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+}
+
+.search-container input {
+    padding-left: 2.5rem;
+}
+
+/* Calendar Table */
+.calendar-table {
+    border: 1px solid #E5E7EB;
+    table-layout: fixed; /* Pour des colonnes de largeur égale */
+    min-width: 800px; /* Minimum width to prevent squishing */
+    width: 100%;
+}
+
+.calendar-table th {
+    text-align: center;
+    padding: 1rem;
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    font-weight: 600;
+}
+
+.calendar-table td {
+    height: auto; /* Enlever la hauteur fixe */
+    min-height: 150px;
+    padding: 0.75rem;
+    vertical-align: top;
+    overflow-y: auto;
+    max-height: 300px; /* Hauteur maximum avant scroll */
+}
+
+.course-block {
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem; /* Espacement entre les blocs */
+    background-color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    height: auto; /* Hauteur automatique */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.course-block:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    transition: all 0.2s ease;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-block:last-child {
+    margin-bottom: 0; /* Pas de marge pour le dernier bloc */
+}
+
+.course-title {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.course-info p {
+    margin: 0; /* Enlever les marges par défaut */
+    line-height: 1.4;
+}
+
+.course-time {
+    margin-top: auto;
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+/* Icons */
+.bi {
+    font-size: 1rem;
+    vertical-align: -0.125em;
+}
+
+.search-container .bi-search {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+.course-block .bi {
+    color: #6B7280;
+}
+
+.date-navigation .bi {
+    font-size: 1.25rem;
+}
+
+/* Card Colors */
+.bg-primary-subtle {
+    background-color: #cfe2ff !important;
+    border: 1px solid #9ec5fe !important;
+}
+
+.bg-success-subtle {
+    background-color: #d1e7dd !important;
+    border: 1px solid #a3cfbb !important;
+}
+
+.bg-info-subtle {
+    background-color: #cff4fc !important;
+    border: 1px solid #9eeaf9 !important;
+}
+
+.bg-warning-subtle {
+    background-color: #fff3cd !important;
+    border: 1px solid #ffe69c !important;
+}
+
+.bg-danger-subtle {
+    background-color: #f8d7da !important;
+    border: 1px solid #f5c2c7 !important;
+}
+
+/* Calendar Header */
+.calendar-header {
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1rem;
+}
+
+.calendar-header .content-title {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.view-controls .btn {
+    min-width: 80px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0 !important; /* Supprime la marge pour éviter que le contenu se cache */
+        width: 100% !important; /* Assure que le contenu occupe toute la largeur */
+    }
+
+    .sidebar {
+        display: none; /* Cache la barre latérale sur les petits écrans */
+    }
+
+    .offcanvas {
+        width: 250px; /* Définit une largeur fixe pour le menu mobile */
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .calendar-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .filters form {
+        flex-direction: column;
+    }
+
+    .form-select {
+        width: 100%;
+    }
+
+    .filters-bar .d-flex {
+        flex-direction: column;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .filters-group {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .calendar-header > div {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content {
+        padding: 1rem;
+    }
+
+    .date-navigation {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .view-controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .date-navigation,
+    .view-controls {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .matiere {
+        padding: 0.5rem;
+        margin: 0.25rem;
+    }
+}
+
+/* Responsive Breakpoints */
+
+/* Extra Large (≥1400px) */
+@media (min-width: 1400px) {
+    .content-wrapper {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .calendar-table td {
+        height: 180px;
+    }
+}
+
+/* Large (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .content-wrapper {
+        max-width: 1140px;
+    }
+
+    .calendar-table td {
+        height: 160px;
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Medium (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .content-wrapper {
+        max-width: 960px;
+    }
+
+    .course-block {
+        padding: 0.5rem;
+    }
+
+    .course-title {
+        font-size: 0.9rem;
+    }
+
+    .course-info p {
+        font-size: 0.8rem;
+    }
+
+    .main-content {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+        padding: 1.25rem;
+    }
+}
+
+/* Small (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .filters-bar .d-flex {
+        flex-wrap: wrap;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .filters-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .filters-group select {
+        flex: 1;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 1rem;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+}
+
+/* Extra Small (576px - 767px) */
+@media (max-width: 767px) {
+    .main-content {
+        padding: 1rem;
+    }
+
+    .calendar-header {
+        text-align: center;
+    }
+
+    .date-navigation,
+    .view-controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .table-responsive {
+        margin: 0 -1rem;
+    }
+
+    .calendar-table {
+        font-size: 0.875rem;
+    }
+
+    .course-block {
+        margin: 0.25rem;
+    }
+
+    /* Rotation du tableau pour mobile */
+    .calendar-table, 
+    .calendar-table thead, 
+    .calendar-table tbody, 
+    .calendar-table tr, 
+    .calendar-table th, 
+    .calendar-table td {
+        display: block;
+    }
+
+    .calendar-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .calendar-table td {
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .calendar-table td::before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    /* Ajoute les labels pour chaque jour */
+    .calendar-table td:nth-of-type(1):before { content: "Lundi"; }
+    .calendar-table td:nth-of-type(2):before { content: "Mardi"; }
+    .calendar-table td:nth-of-type(3):before { content: "Mercredi"; }
+    .calendar-table td:nth-of-type(4):before { content: "Jeudi"; }
+    .calendar-table td:nth-of-type(5):before { content: "Vendredi"; }
+    .calendar-table td:nth-of-type(6):before { content: "Samedi"; }
+
+    .calendar-table td {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    .course-block {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Mobile Portrait (≤575px) */
+@media (max-width: 575px) {
+    .content-wrapper {
+        padding: 0.5rem;
+    }
+
+    .calendar-controls {
+        gap: 0.5rem;
+    }
+
+    .date-navigation .btn,
+    .view-controls .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .course-block {
+        padding: 0.5rem;
+    }
+
+    .course-title {
+        font-size: 0.875rem;
+    }
+
+    .course-info p {
+        font-size: 0.75rem;
+    }
+
+    .main-content {
+        padding: 0.75rem;
+    }
+
+    .course-block {
+        padding: 0.75rem;
+        margin: 0.25rem 0;
+    }
+}

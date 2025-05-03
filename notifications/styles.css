@@ -1,0 +1,329 @@
+@import "../components/footer/styles.css";
+@import "../components/header/styles.css";
+@import "../components/sidebar/styles.css";
+
+/* Notifications Page Styles */
+.notifications-container {
+  margin-top: var(--header-height);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .notifications-container {
+    grid-template-columns: 280px 1fr;
+    padding: 2rem 1rem;
+  }
+}
+
+.filters-section {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .filters-section {
+    display: block;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: calc(var(--header-height) + 1rem);
+  }
+}
+
+.filters-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-item {
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.filter-item i {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.filter-item:hover {
+  background-color: #f5f5f5;
+}
+
+.filter-item.active {
+  background-color: #e6f0ff;
+  color: #1a73e8;
+}
+
+.notifications-section {
+  flex: 1;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 1rem;
+}
+
+.notifications-title {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .notifications-title {
+    font-size: 1.5rem;
+  }
+}
+
+#markAllRead {
+  white-space: nowrap;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 575px) {
+  #markAllRead i {
+    margin-right: 0;
+  }
+}
+
+.mark-all-read {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.mark-all-read:hover {
+  text-decoration: underline;
+}
+
+.notification-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .notification-item {
+    padding: 1.25rem;
+  }
+}
+
+.notification-item:hover {
+  transform: translateY(-2px);
+}
+
+.notification-item.unread {
+  background-color: #f8f9ff;
+  border-left: 4px solid #1a73e8;
+}
+
+.notification-item.unread::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 8px;
+  height: 8px;
+  background-color: #1a73e8;
+  border-radius: 50%;
+}
+
+.notification-item.unread .notification-title {
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.notification-item.unread::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #1a73e8;
+  border-radius: 4px 0 0 4px;
+}
+
+.notification-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e6f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: #1a73e8;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .notification-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.notification-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.notification-icon img.default-avatar {
+  background-color: #e6f0ff;
+  padding: 5px;
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.notification-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.notification-message {
+  font-size: 0.875rem;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .notification-message {
+    font-size: 1rem;
+  }
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .notifications-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin-top: calc(var(--header-height) + 1rem);
+  }
+
+  .filters-section {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .notification-item {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .notifications-container {
+    padding: 0.5rem;
+  }
+
+  .notifications-header {
+    flex-wrap: wrap;
+  }
+
+  .filter-list {
+    display: flex;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    margin: 0 -1rem;
+    padding: 0.5rem 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .notification-item {
+    padding: 1rem;
+  }
+
+  .notification-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .notification-content {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .notifications-container {
+    margin-top: var(--header-height);
+  }
+
+  .notifications-header {
+    padding: 0.5rem;
+  }
+
+  #markAllRead {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .notification-item {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .filter-item {
+    font-size: 0.9rem;
+  }
+
+  .notification-message {
+    font-size: 0.85rem;
+  }
+
+  .notification-meta {
+    font-size: 0.75rem;
+  }
+}

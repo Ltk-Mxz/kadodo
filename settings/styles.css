@@ -1,0 +1,240 @@
+@import "../components/footer/styles.css";
+@import "../components/header/styles.css";
+@import "../components/sidebar/styles.css";
+
+/* Styles pour la page des paramètres */
+.settings-container {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: auto;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-top: var(--header-height); /* Ajout d'un espace pour compenser la hauteur du header */
+}
+
+.settings-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.settings-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.profile-section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.avatar-qr-container {
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.avatar-section {
+    text-align: center;
+}
+
+.avatar-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-code-container {
+    width: 150px;
+    height: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.download-qr {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+}
+
+.download-qr:hover {
+    background-color: #0056b3;
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    cursor: pointer;
+    padding: 6px;
+    transition: all 0.3s ease;
+}
+
+.camera-icon:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+.profile-photo button {
+    margin: 0.5rem 0;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.profile-photo button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.settings-form label {
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.settings-form .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    transition: border-color 0.2s;
+}
+
+.settings-form .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.password-section {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 2rem;
+}
+
+.password-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.position-relative {
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .qr-code-container {
+        top: 0;
+        right: -170px;
+    }
+}
+
+/* Sur petit écran */
+@media (max-width: 767px) {
+    .qr-code-container {
+        position: relative;
+        margin: 20px auto 0;
+    }
+
+    .avatar-qr-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qr-section {
+        margin-top: 1rem;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .settings-container {
+        padding: 1rem 0;
+    }
+
+    .profile-section {
+        padding: 1.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }}

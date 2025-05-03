@@ -1,0 +1,132 @@
+@import "../../components/footer/styles.css";
+@import "../../components/header/styles.css";
+@import "../../components/sidebar/styles.css";
+
+/* Main Layout */
+.main-content {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    padding: 2rem;
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Search and Filters */
+.search-container {
+    position: relative;
+    min-width: 250px;
+    flex: 1;
+}
+
+.search-container .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    pointer-events: none; /* Empêche l'interaction avec l'icône */
+}
+
+.search-container input {
+    padding-left: 2.5rem; /* Ajoute un espace pour l'icône */
+}
+
+/* Class Cards */
+.class-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 1px solid #E5E7EB;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.class-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.class-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.class-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.class-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    background-color: #DEF7EC;
+    color: #059669;
+    border: 1px solid #A7F3D0;
+}
+
+.class-info {
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.class-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #6B7280;
+}
+
+.class-info p i {
+    margin-right: 0.5rem;
+    width: 1.2rem;
+    text-align: center;
+    color: #4B5563;
+}
+
+.class-info i {
+    margin-right: 0.5rem;
+    color: #6B7280;
+}
+
+/* Animation pour les cartes */
+.class-item {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0 !important; /* Supprime la marge pour éviter que le contenu se cache */
+        width: 100% !important; /* Assure que le contenu occupe toute la largeur */
+        padding: 1rem;
+    }
+
+    .sidebar {
+        display: none; /* Cache la barre latérale sur les petits écrans */
+    }
+
+    .offcanvas {
+        width: 250px; /* Définit une largeur fixe pour le menu mobile */
+    }
+    
+    .row {
+        flex-direction: column;
+    }
+    
+    .col {
+        margin-bottom: 1rem;
+    }
+}

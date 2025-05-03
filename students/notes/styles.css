@@ -1,0 +1,337 @@
+@import "../../components/footer/styles.css";
+@import "../../components/header/styles.css";
+@import "../../components/sidebar/styles.css";
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main wrapper */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    padding-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    background: #F9FAFB;
+
+    width: calc(100% - var(--sidebar-width));
+    min-height: calc(100vh - var(--header-height) - 60px); /* 60px est la hauteur du footer */
+    margin-top: var(--header-height);
+    margin-bottom: 2rem; /* Ajouter de l'espace pour le footer */
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cards */
+.section-card {
+    background: white;
+    border-radius: 0.5rem;
+    border: 1px solid #E5E7EB;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+.grade-card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    padding: 1.5rem;
+}
+
+.grade-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.grade-card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.grade-card-subtitle {
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+.grade-card-score {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2563EB;
+    margin-bottom: 0.25rem;
+}
+
+.grade-card-average {
+    color: #6B7280;
+    font-size: 0.875rem;
+}
+
+/* Table styles */
+.table-responsive {
+    display: block;
+}
+
+.mobile-grade-cards {
+    display: none;
+}
+
+/* Performance chart */
+.performance-chart {
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.flex-grow-1.d-flex {
+    flex: 1;
+}
+
+/* Search styles */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-container input {
+    padding-left: 2.5rem;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: #6B7280;
+}
+
+/* Performance chart adjustments */
+.performance-chart .chart-container {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+}
+
+/* Responsive Breakpoints */
+
+/* Extra Large Desktop (≥1400px) */
+@media (min-width: 1400px) {
+    .content-wrapper {
+        max-width: 1320px;
+    }
+}
+
+/* Large Desktop (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .content-wrapper {
+        max-width: 1140px;
+    }
+}
+
+/* Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .content-wrapper {
+        max-width: 960px;
+    }
+}
+
+/* Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-content {
+        margin-left: var(--sidebar-width); /* Ajout du margin-left */
+        width: calc(100% - var(--sidebar-width)); /* Ajustement de la largeur */
+    }
+
+    .content-wrapper {
+        max-width: 720px;
+    }
+
+    .table-responsive {
+        display: block !important;
+    }
+
+    .mobile-grade-cards {
+        display: none !important;
+    }
+
+    .performance-chart .d-flex.gap-4 {
+        gap: 1rem !important;
+    }
+}
+
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .content-wrapper {
+        max-width: 540px;
+        padding: 0;
+    }
+
+    .section-card {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        margin: 0 -1rem 1rem;
+        padding: 1rem;
+    }
+
+    .table-responsive {
+        display: none !important;
+    }
+
+    .mobile-grade-cards {
+        display: block !important;
+    }
+
+    .d-flex.gap-3 {
+        flex-direction: column;
+    }
+
+    .form-select {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .performance-chart .d-flex.gap-4 {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+
+    .performance-chart .flex-grow-1.d-flex {
+        min-width: 100px;
+        flex: 0 0 auto;
+    }
+}
+
+/* Mobile Portrait (≤575px) */
+@media (max-width: 575px) {
+    .content-wrapper {
+        width: 100%;
+    }
+
+    .content-title {
+        font-size: 1.25rem;
+    }
+
+    .grade-card {
+        padding: 1rem;
+    }
+
+    .grade-card-score {
+        font-size: 1.125rem;
+    }
+
+    .grade-card-subtitle,
+    .grade-card-average {
+        font-size: 0.75rem;
+    }
+
+    .section-title {
+        font-size: 1.125rem;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+    .filters-section {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        max-width: 100%;
+    }
+    
+    .filters-container {
+        flex-wrap: wrap;
+    }
+
+    .performance-chart .chart-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+        scroll-padding: 1rem;
+    }
+
+    .performance-chart .flex-grow-1.d-flex {
+        min-width: 120px;
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-section {
+        padding: 0 1rem;
+    }
+
+    .search-container {
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+
+    .filters-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .form-select {
+        width: 100%;
+    }
+}
+
+.badge {
+    font-weight: 500;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .badge {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .table th {
+        white-space: nowrap;
+    }
+}

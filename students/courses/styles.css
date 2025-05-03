@@ -1,0 +1,373 @@
+@import "../../components/footer/styles.css";
+@import "../../components/header/styles.css";
+@import "../../components/sidebar/styles.css";
+
+/* Main content */
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 2rem;
+  margin-top: var(--header-height);
+}
+
+/* Document card */
+.document-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  transition: transform 0.2s;
+  position: relative;
+  min-height: 200px;
+}
+
+.document-card:hover {
+  transform: translateY(-2px);
+}
+
+.document-type {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.document-type.pdf {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.document-type.doc {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.document-type.ppt {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.document-type.xls {
+  background-color: #def7ec;
+  color: #059669;
+}
+
+/* Course specific styles */
+.document-type.course {
+  background-color: #E0E7FF;
+  color: #4F46E5;
+}
+
+.course-description {
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.course-hours {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+.course-hours i {
+  font-size: 1rem;
+}
+
+.course-details {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+.course-details p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-details i {
+  font-size: 1rem;
+  color: #4F46E5;
+}
+
+.document-info {
+  margin-top: 1rem;
+}
+
+.document-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.document-info p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.document-info .professor {
+  font-size: 0.875rem;
+  color: #3b82f6;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.document-info .date {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.document-size {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.document-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.document-actions .btn-icon {
+  color: #6b7280;
+}
+
+.document-actions .btn-icon:hover {
+  background-color: #f3f4f6;
+  color: #3b82f6;
+}
+
+.btn-icon {
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: #6b7280;
+  background: transparent;
+}
+
+.btn-icon:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* Search container */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-container input {
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  border-radius: 8px;
+  height: 38px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+}
+
+/* Filter selects */
+.filter-select {
+  min-width: 160px;
+  height: 38px;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.filter-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+}
+
+/* Filters section */
+.filters-section {
+  width: 100%;
+}
+
+.filters-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Titre et filtres */
+.content-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.filters-bar {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .row.g-4 > .col-md-4 {
+    flex: 0 0 33.333%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .row.g-4 > .col-md-4 {
+    flex: 0 0 50%;
+  }
+
+  .search-container {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  .filter-select {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    margin-top: var(--header-height);
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content-title {
+    font-size: 1.25rem;
+  }
+
+  .filters-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .filter-select {
+    width: calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 773px) {
+  .main-content {
+    margin-left: var(
+      --sidebar-width
+    ); /* Ajout de la marge pour éviter le chevauchement */
+    padding: 1rem;
+    width: calc(100% - var(--sidebar-width)); /* Ajustement de la largeur */
+  }
+
+  .sidebar {
+    width: var(--sidebar-width);
+    z-index: 1040;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100%;
+  }
+
+  /* Si la sidebar est cachée */
+  .sidebar:not(.show) ~ .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Si la sidebar est visible */
+  .sidebar.show ~ .main-content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1035;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  .row.g-4 > .col-md-4 {
+    flex: 0 0 100%;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .filters-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content {
+    padding: 0.75rem;
+  }
+
+  .search-container input,
+  .filter-select {
+    height: 36px;
+    font-size: 0.875rem;
+  }
+
+  .document-card {
+    padding: 1rem;
+  }
+
+  .document-type {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .document-info h3 {
+    font-size: 0.875rem;
+  }
+
+  .document-info .professor,
+  .document-info .date {
+    font-size: 0.813rem;
+  }
+}
